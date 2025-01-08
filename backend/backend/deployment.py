@@ -3,7 +3,7 @@ import os
 from .settings import BASE_DIR
 
 # Load production environment variables
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']]
