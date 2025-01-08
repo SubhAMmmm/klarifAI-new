@@ -50,10 +50,10 @@ DATABASES = {
 }
 
 # Production CORS settings
-CORS_ALLOWED_ORIGINS = [
-    os.getenv('FRONTEND_URL'),
-]
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOWED_ORIGINS = [
+#     os.getenv('FRONTEND_URL'),
+# ]
+# CORS_ALLOW_CREDENTIALS = True
 
 # Static and Media Files
 STORAGES = {
