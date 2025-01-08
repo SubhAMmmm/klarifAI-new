@@ -5,6 +5,7 @@ from .settings import BASE_DIR
 # Load production environment variables
 DEBUG = True
 
+GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']]
 SECRET_KEY = os.environ['MY_SECRET_KEY']
