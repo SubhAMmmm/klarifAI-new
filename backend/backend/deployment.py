@@ -6,14 +6,22 @@ from .settings import BASE_DIR
 DEBUG = True
 
 GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
-CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']]
+ALLOWED_HOSTS = [
+    os.environ.get('WEBSITE_HOSTNAME', ''),
+    '.azurewebsites.net',
+    'localhost',
+    '127.0.0.1'
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://' + os.environ.get('WEBSITE_HOSTNAME', ''),
+    'https://*.azurewebsites.net'
+]
 SECRET_KEY = os.environ['MY_SECRET_KEY']
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # Should be as high as possible
-    'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -102,7 +110,7 @@ LOGGING = {
 }
 
 # Security settings
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
